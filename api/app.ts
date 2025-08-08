@@ -8,6 +8,9 @@ import path from 'path';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import authRoutes from './routes/auth.js';
+import coinsRoutes from './routes/coins.js';
+import chatRoutes from './routes/chat.js';
+import userRoutes from './routes/user.js';
 
 // for esm mode
 const __filename = fileURLToPath(import.meta.url);
@@ -27,6 +30,9 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
  * API Routes
  */
 app.use('/api/auth', authRoutes);
+app.use('/api/coins', coinsRoutes);
+app.use('/api/chat', chatRoutes);
+app.use('/api/user', userRoutes);
 
 /**
  * health

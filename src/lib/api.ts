@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Coin, WatchlistItem, PortfolioTransaction, PortfolioHolding, PortfolioSummary, ChatMessage, User } from './supabase';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const API_BASE_URL = import.meta.env.VITE_API_URL || '';
 
 // Create axios instance
 const api = axios.create({

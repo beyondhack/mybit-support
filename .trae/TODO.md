@@ -1,7 +1,7 @@
 # TODO:
 
-- [x] 1: Analyze the current Dashboard implementation and identify the data mismatch (priority: High)
-- [x] 2: Update Dashboard component to use getCoinsMarketData() instead of getTrendingCoins() (priority: High)
-- [x] 4: Test the updated Dashboard to verify price, 24h change, and market cap display correctly (priority: High)
-- [x] 3: Ensure proper error handling and loading states for market data (priority: Medium)
-- [x] 5: Check if any environment variables need to be configured for CoinGecko API (priority: Medium)
+- [x] 13: Fix Auth0 'Invalid state' error by implementing proper state handling (priority: High)
+- [x] 14: Add mechanism to clear Auth0 cache and storage when state errors occur (priority: High)
+- [x] 15: Implement state validation debugging for Auth0 authentication (priority: Medium)
+- [x] 16: Add clear state and retry functionality to error handler (priority: Medium)
+- [x] 17: Test Auth0 authentication after state error fixes (priority: Medium)

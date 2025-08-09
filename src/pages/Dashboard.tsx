@@ -10,20 +10,22 @@ export default function Dashboard() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchTrendingCoins = async () => {
+    const fetchMarketData = async () => {
       try {
         setLoading(true);
-        const coins = await apiClient.getTrendingCoins();
+        // Fetch market data for popular coins instead of trending
+        const popularCoins = ['bitcoin', 'ethereum', 'cardano', 'polkadot', 'chainlink', 'solana', 'avalanche-2', 'polygon', 'litecoin', 'dogecoin'];
+        const coins = await apiClient.getCoinsMarketData(popularCoins);
         setTrendingCoins(coins);
       } catch (err) {
-        console.error('Error fetching trending coins:', err);
-        setError('Failed to load trending coins');
+        console.error('Error fetching market data:', err);
+        setError('Failed to load market data');
       } finally {
         setLoading(false);
       }
     };
 
-    fetchTrendingCoins();
+    fetchMarketData();
   }, []);
 
   const formatPrice = (price: number | undefined) => {
@@ -208,10 +210,10 @@ export default function Dashboard() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        {coin.image_url && (
+                        {(coin.image_url || coin.image) && (
                           <img
                             className="h-8 w-8 rounded-full mr-3"
-                            src={coin.image_url}
+                            src={coin.image_url || coin.image}
                             alt={coin.name}
                           />
                         )}

@@ -16,7 +16,7 @@ import CoinDetails from '@/pages/CoinDetails';
 import Profile from '@/pages/Profile';
 
 function AppContent() {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
   const { setAuthToken } = useApiAuth();
   const socket = useSocket();
 
@@ -25,6 +25,18 @@ function AppContent() {
       setAuthToken();
     }
   }, [isAuthenticated, setAuthToken]);
+
+  // Show loading spinner while Auth0 is initializing
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <Router>
